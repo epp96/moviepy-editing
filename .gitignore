@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# custom
+# exclude everything
+movies/*
+
+# exception to the rule
+!movies/.gitkeep
