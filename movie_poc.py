@@ -3,7 +3,7 @@ from moviepy.editor import *
 from moviepy.video.fx import resize
 # import time
 
-videoDuration = 3600
+videoDuration = 300
 
 audioName = "Waves-Crashing-on-Rock-Beach"
 
@@ -24,9 +24,10 @@ arrayAudioClips = [audioClip]
 # create array of audio clips
 for i in numberOfAudioClips:
     arrayAudioClips.append(audioClip)
-    print ("appened clip: " + str(len(arrayAudioClips)))
+    print ("appended clip: " + str(len(arrayAudioClips)))
 
-audioClip = concatenate_audioclips(arrayAudioClips);
+# audioClip = concatenate_audioclips(arrayAudioClips);
+audioClip = CompositeAudioClip(arrayAudioClips)
 print (f"compositeAudioClip duration: {audioClip.duration}")
 
 clip = imageClip.set_audio(audioClip).set_duration(videoDuration)
@@ -34,5 +35,5 @@ clip = imageClip.set_audio(audioClip).set_duration(videoDuration)
 video = CompositeVideoClip([clip])
 
 # Write the result to a file (many options available !)
-video.write_videofile("H:\\Users\\Enrique\\Desktop\\PersonalProjects\\youtube\\movies\\" + audioName + ".mp4", fps=12)
+video.write_videofile("movies\\" + audioName + ".mp4", fps=12)
 

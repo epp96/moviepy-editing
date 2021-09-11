@@ -129,8 +129,15 @@ dmypy.json
 .pyre/
 
 # custom
-# exclude everything
-movies/*
 
-# exception to the rule
+# movies
+movies/*
 !movies/.gitkeep
+
+# movies
+pictures/*
+!picture/.gitkeep
+
+# movies
+audio/*
+!audio/.gitkeep
