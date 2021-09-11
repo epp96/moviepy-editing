@@ -136,7 +136,7 @@ movies/*
 
 # movies
 pictures/*
-!picture/.gitkeep
+!pictures/.gitkeep
 
 # movies
 audio/*
