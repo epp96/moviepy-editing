@@ -141,3 +141,11 @@ pictures/*
 # movies
 audio/*
 !audio/.gitkeep
+
+#attributions
+attributions/*
+
+#tags
+tags/*
+
+notes
