@@ -6,7 +6,7 @@ import moviepy.audio.fx.all as afx
 import numpy as np
   
 videoDuration = 60 * 1
-clip_rain = VideoFileClip("movies\\practice\\rain.mp4")
+clip_rain = VideoFileClip("movies\\overlays\\rain.mp4")
 clip_rain = vfx.loop(clip_rain, duration=videoDuration) # like this
 clip_rain = clip_rain.set_opacity(.50)
 
