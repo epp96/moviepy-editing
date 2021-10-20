@@ -29,7 +29,7 @@ print ("these are the inputs: " + "inputDuration: " + inputDuration + ", " + "ov
 # if inputDuration is none or 0 and below make video 60 mins
 videoDuration = 60 if inputDuration == None or int(inputDuration) < 1 else int(inputDuration)
 overlay_paths = overlayPath.split(',')
-overlay_clips = [VideoFileClip(path) for path in overlay_paths]
+overlay_clips = [vfx.loop(vfx.speedx(VideoFileClip(path).set_opacity(overlayOpacity/len(overlay_paths)), overlaySpeed), duration=videoDuration) for path in overlay_paths]
 print("overlay paths + " + str(len(overlay_clips)))
 # set overlay
 overlay = CompositeVideoClip(overlay_clips, size=[1280,720]).set_audio(None)
@@ -37,14 +37,14 @@ print("overlay duration original: " + str(overlay.duration))
 
 # applying speed effect
 # overlay = overlay.fx(vfx.speedx, overlaySpeed)
-overlay = vfx.speedx(overlay, overlaySpeed)
-print("overlay duration after loop: " + str(overlay.duration))
+# overlay = vfx.speedx(overlay, overlaySpeed)
+# print("overlay duration after loop: " + str(overlay.duration))
 # applying loop
-overlay = vfx.loop(overlay, duration=videoDuration) # like this
-print("overlay duration after speed up: " + str(overlay.duration))
+# overlay = vfx.loop(overlay, duration=videoDuration) # like this
+# print("overlay duration after speed up: " + str(overlay.duration))
 
 # applying opacity
-overlay = overlay.set_opacity(overlayOpacity)
+# overlay = overlay.set_opacity(overlayOpacity)
 
 # set Background
 background = ImageClip(np.array(Image.open(backgroundPath).resize(overlay.size))).set_duration(videoDuration)
@@ -73,6 +73,6 @@ final_clip_path = "movies/temp/composite.mp4"
 final.write_videofile(final_clip_path, temp_audiofile="temp-audio.m4a", remove_temp=True, codec="libx264", audio_codec="aac")
 
 
-command = "open " + final_clip_path
+command = "start " + final_clip_path
 print(command)
 os.system(command=command)
