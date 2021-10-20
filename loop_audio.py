@@ -10,7 +10,9 @@ def loop_audio(videoDuration, audioClip=None, audioPath=""):
         raise Exception('videoDuration cannot be 0 nor both audioPath and audioClip empty')
     originalAudio=None
     try:
-        originalAudio = AudioFileClip(audioPath)
+        # originalAudio = AudioFileClip(audioPath)
+        originalAudio = CompositeAudioClip([AudioFileClip(path) for path in audioPath.split(',')])
+
     except Exception as e:
         if audioClip != None:
             originalAudio = audioClip

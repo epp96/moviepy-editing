@@ -149,3 +149,7 @@ attributions/*
 tags/*
 
 notes
+
+
+#mac
+.DS_Store

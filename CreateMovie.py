@@ -5,7 +5,8 @@ from moviepy.editor import *
 import numpy as np
 from PIL import Image
 from loop_audio import loop_audio
-
+# TODO make a setup.py file for easy setups and 
+#   package intallation
 
 if len(sys.argv) < 5:
     print("need to add some arguments: imagePath, audioPath, duration, createdMovieName")
