@@ -5,7 +5,7 @@ import datetime
 
 
 
-def loop_audio(videoDuration, audioClip=None, audioPath=""):
+def loop_audio(videoDuration, audioClip=None, audioPath="", overlap=3):
     if videoDuration == 0 or (len(audioPath) == 0 and audioClip == None):
         raise Exception('videoDuration cannot be 0 nor both audioPath and audioClip empty')
     originalAudio=None
@@ -32,7 +32,7 @@ def loop_audio(videoDuration, audioClip=None, audioPath=""):
     print ("time stamps are " + str([str(datetime.timedelta(seconds = patchtime)) for patchtime in patchtimes]))
     audioList = [audio]
     if (len(patchtimes) > 0):
-        patchesClip = CompositeAudioClip([originalAudio.set_start(timestamp).set_end(timestamp + 3) for timestamp in patchtimes]).set_duration(videoDuration)
+        patchesClip = CompositeAudioClip([originalAudio.set_start(timestamp).set_end(timestamp + overlap) for timestamp in patchtimes]).set_duration(videoDuration)
         audioList.append(patchesClip)
     audio = CompositeAudioClip(audioList)
     return audio
